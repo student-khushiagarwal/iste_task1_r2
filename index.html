@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Authentication and CRUD Operations</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="actionButton">Click Me!</button>
+
+<script>
+  let users = [];
+
+  function createUser(username, password) {
+    users.push({ username, password });
+    console.log("User created successfully.");
+  }
+
+  function readUser(username) {
+    const user = users.find(user => user.username === username);
+    if (user) {
+      console.log("User details:", user);
+    } else {
+      console.log("User not found.");
+    }
+  }
+
+  function updateUser(username, newPassword) {
+    const userIndex = users.findIndex(user => user.username === username);
+    if (userIndex !== -1) {
+      users[userIndex].password = newPassword;
+      console.log("User details updated successfully.");
+    } else {
+      console.log("User not found.");
+    }
+  }
+
+  function deleteUser(username) {
+    const userIndex = users.findIndex(user => user.username === username);
+    if (userIndex !== -1) {
+      users.splice(userIndex, 1);
+      console.log("User deleted successfully.");
+    } else {
+      console.log("User not found.");
+    }
+  }
+
+  const actionButton = document.getElementById('actionButton');
+  actionButton.addEventListener('click', () => alert("You just clicked there!"));
+  actionButton.addEventListener('dblclick', () => alert("You just double-clicked there!"));
+  actionButton.addEventListener('mouseenter', () => alert("You just moved in!"));
+  actionButton.addEventListener('mouseleave', () => alert("You just moved out!"));
+</script>
+
+</body>
+</html>
